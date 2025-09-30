@@ -1,10 +1,8 @@
 'use client'
-import { Canvas } from '@react-three/fiber'
 import React, { useRef, useState, useEffect } from 'react'
-
+import { PerspectiveCamera } from '@react-three/drei'
 import CardMesh from './Card'
 import * as THREE from 'three'
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -12,12 +10,11 @@ import { useGSAP } from '@gsap/react'
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 const PI = Math.PI
 
-const Env = () => {
+const Env = ({visible}: {visible?: boolean}) => {
   const card1Ref = useRef<THREE.Mesh|null>(null)
   const card2Ref = useRef<THREE.Mesh|null>(null)
   const card3Ref = useRef<THREE.Mesh|null>(null)
   const groupRef = useRef<THREE.Mesh|null>(null)
-  const container = useRef<HTMLDivElement>(null)
   const [meshesLoaded, setMeshesLoaded] = useState(false)
 
   useEffect(() => {
@@ -34,15 +31,15 @@ const Env = () => {
   }
   
   useGSAP(() => {
-    if (!meshesLoaded) return
+    if (!meshesLoaded || !visible) return
     
-    const tl = gsap.timeline({ scrollTrigger: {
-        trigger: container.current, 
+    const tl = gsap.timeline({ 
+      scrollTrigger: {
+        trigger: ".env-container",
         start: 'top 0%', 
         end: 'bottom 100%', 
-        markers: true,
         scrub: true,
-        pin:true
+        pin: true
       }
     })
     
@@ -55,8 +52,7 @@ const Env = () => {
       card1Ref.current.rotation.z = -1 * PI / 12
       card2Ref.current.rotation.z = 0
       card3Ref.current.rotation.z = 1 * PI / 12
-      // gsap.to(card3Ref.current.rotation, { z: -1 * PI, duration: 5, ease: 'none' })
-      // tl.fromTo(card1Ref.current.position, { z: 20 }, { z: -20, duration: 3, ease: 'none' })
+
       tl
       .fromTo(groupRef.current!.position, { y: -10 }, { y: 5, duration: 1, ease: 'none' })
       .to(groupRef.current!.rotation, {y: 2*PI, duration: 2, ease: 'none'}, "<")
@@ -65,24 +61,19 @@ const Env = () => {
       .to(card3Ref.current.position, {y: "+=18", duration: 1, ease: 'power2.in'}, 2)
       .to(card2Ref.current.rotation, {y: "+=3.13", z: "+=0.3", x:"+=0.4", duration: 2, ease: 'power4.inOut'}, 3)
       .to(card2Ref.current.rotation, {y: "+=6.28", duration: 1})
-      // .to()
     }
-  }, { dependencies: [meshesLoaded] });
-  
+  }, { dependencies: [meshesLoaded, visible] });
   
   return (
-    <div className="h-[200vh] w-screen" ref={container}>
-      <Canvas camera={{ position: [0, 0, 50], fov: 50 }} shadows>
-        <ambientLight intensity={1.5} />
-        {/* <spotLight position={[0, 0, 3]} angle={PI} intensity={20}/> */}
-        {/* <pointLight position={[-1, 5, 3]} intensity={30} /> */}
-        <group ref={groupRef} rotation={[0, 0, PI - 0]} position={[2,0,0]}>
-          <CardMesh position={[0, 0, 0]} imageUrl="/cards/card1.jpg" ref={(el) => handleMeshRef(el, card1Ref)} />
-          <CardMesh position={[0, 0, 0.25]} imageUrl="/cards/card2.jpg" ref={(el) => handleMeshRef(el, card2Ref)} />
-          <CardMesh position={[0, 0, 0.5]} imageUrl="/cards/card3.jpg" ref={(el) => handleMeshRef(el, card3Ref)} />
-        </group>
-      </Canvas>
-    </div>
+    <>
+      <PerspectiveCamera makeDefault position={[0, 0, 50]} fov={50} />
+      <ambientLight intensity={1.5} />
+      <group ref={groupRef} rotation={[0, 0, PI - 0]} position={[2,0,0]}>
+        <CardMesh position={[0, 0, 0]} imageUrl="/cards/card1.jpg" ref={(el) => handleMeshRef(el, card1Ref)} />
+        <CardMesh position={[0, 0, 0.25]} imageUrl="/cards/card2.jpg" ref={(el) => handleMeshRef(el, card2Ref)} />
+        <CardMesh position={[0, 0, 0.5]} imageUrl="/cards/card3.jpg" ref={(el) => handleMeshRef(el, card3Ref)} />
+      </group>
+    </>
   );
 };
 
