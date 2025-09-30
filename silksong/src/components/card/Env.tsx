@@ -35,7 +35,7 @@ const Env = ({visible}: {visible?: boolean}) => {
     
     const tl = gsap.timeline({ 
       scrollTrigger: {
-        trigger: ".env-container", // You'll need to add this class to the container in page.tsx
+        trigger: ".env-container",
         start: 'top 0%', 
         end: 'bottom 100%', 
         scrub: true,

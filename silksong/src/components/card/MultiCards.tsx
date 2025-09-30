@@ -42,11 +42,16 @@ const MultiCards = ({visible}: {visible?: boolean}) => {
         const y = (2 - row) * 13
 
         return (
-          <group key={idx} onPointerOver={() => rotate180(cardRefs.current[idx])}>
+          <group 
+            key={idx} 
+            onClick={() => rotate180(cardRefs.current[idx])}
+            onPointerOver={() => rotate180(cardRefs.current[idx])}
+            position={[x, y, 0]}
+          >
             <CardMesh
               ref={(el) => { cardRefs.current[idx] = el }}
               imageUrl={cardImages[idx % cardImages.length]}
-              position={[x, y, 0]}
+              position={[0, 0, 0]}
             />
           </group>
         )

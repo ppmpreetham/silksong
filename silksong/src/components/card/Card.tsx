@@ -7,7 +7,12 @@ const CardMesh = forwardRef<THREE.Mesh, { imageUrl: string, position?: [number, 
   const backside = useTexture('/cards/back.webp');
   
   return (
-    <mesh ref={ref} position={position}>
+    <mesh 
+      ref={ref} 
+      position={position}
+      castShadow
+      receiveShadow
+    >
       {/* Front side */}
       <planeGeometry args={[8, 12]} />
       <meshStandardMaterial color="white" map={backside} side={THREE.DoubleSide} />
