@@ -4,7 +4,7 @@ import * as THREE from 'three'
 
 const CardMesh = forwardRef<THREE.Mesh, { imageUrl: string, position?: [number, number, number] }>(({ imageUrl, position }, ref) => {
   const texture = useTexture(imageUrl);
-  const backside = useTexture('/cards/card1.jpg');
+  const backside = useTexture('/cards/back.webp');
   
   return (
     <mesh ref={ref} position={position}>

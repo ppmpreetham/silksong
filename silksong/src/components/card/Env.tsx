@@ -32,7 +32,7 @@ const Env = () => {
       setMeshesLoaded(true)
     }
   }
-
+  
   useGSAP(() => {
     if (!meshesLoaded) return
     
