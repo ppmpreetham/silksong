@@ -14,7 +14,7 @@ const Header = () => {
     const ImageRef = useRef<HTMLImageElement>(null)
     const background = useRef<HTMLDivElement>(null)
 
-    gsap.set(ImageRef.current, { opacity: 0 })
+    // gsap.set(ImageRef.current, { opacity: 0 })
     useGSAP(() => {
       const tl = gsap.timeline()
       if (container.current) {
@@ -65,7 +65,7 @@ const Header = () => {
         <span></span>
       </div>
       <div ref={container} className="h-screen w-screen flex flex-col items-center justify-center relative z-10">
-        <Image src="/silksong.png" alt="Silksong Logo" width={500} height={500} ref={ImageRef} className='glow opacity-0'/>
+        <Image src="/silksong.png" alt="Silksong Logo" width={500} height={500} ref={ImageRef} className='glow' style={{ opacity: 0 }} />
       </div>
     </div>
   )
