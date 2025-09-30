@@ -1,0 +1,53 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.background span {
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 20vmin;
+  backface-visibility: hidden;
+  position: absolute;
+  animation-name: move;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+:root {
+  --color-1: #920000;
+  --color-2: #c12a2a;
+  --color-3: #FFACAC;
+}
+
+.background span:nth-child(1) { color: var(--color-1); top: 10%; left: 20%; animation-duration: 16s; animation-delay: -5s; transform-origin: 10vw 15vh; box-shadow: 40vmin 0 0vmin currentColor; opacity: 0.5;}
+.background span:nth-child(2) { color: var(--color-2); top: 70%; left: 80%; animation-duration: 12s; animation-delay: -8s; transform-origin: -5vw 20vh; box-shadow: -40vmin 0 15vmin currentColor; }
+.background span:nth-child(3) { color: var(--color-3); top: 40%; left: 40%; animation-duration: 18s; animation-delay: -3s; transform-origin: 20vw -10vh; box-shadow: 40vmin 0 8vmin currentColor; }
+.background span:nth-child(4) { color: var(--color-1); top: 90%; left: 10%; animation-duration: 14s; animation-delay: -12s; transform-origin: -15vw 25vh; box-shadow: -40vmin 0 12vmin currentColor; }
+.background span:nth-child(5) { color: var(--color-2); top: 20%; left: 70%; animation-duration: 20s; animation-delay: -2s; transform-origin: 5vw -20vh; box-shadow: 40vmin 0 18vmin currentColor; }
+.background span:nth-child(6) { color: var(--color-3); top: 60%; left: 30%; animation-duration: 11s; animation-delay: -7s; transform-origin: -10vw 10vh; box-shadow: -40vmin 0 6vmin currentColor; }
+.background span:nth-child(7) { color: var(--color-1); top: 80%; left: 90%; animation-duration: 15s; animation-delay: -4s; transform-origin: 25vw -5vh; box-shadow: 40vmin 0 14vmin currentColor; }
+.background span:nth-child(8) { color: var(--color-2); top: 30%; left: 60%; animation-duration: 13s; animation-delay: -9s; transform-origin: -20vw 15vh; box-shadow: -40vmin 0 9vmin currentColor; }
+.background span:nth-child(9) { color: var(--color-3); top: 50%; left: 50%; animation-duration: 17s; animation-delay: -1s; transform-origin: 15vw 20vh; box-shadow: 0vmin 0 16vmin currentColor; opacity: 0.5;}
+.background span:nth-child(10) { color: var(--color-1); top: 70%; left: 20%; animation-duration: 19s; animation-delay: -6s; transform-origin: -5vw -15vh; box-shadow: -40vmin 0 11vmin currentColor; }
+.background span:nth-child(11) { color: var(--color-2); top: 10%; left: 80%; animation-duration: 12s; animation-delay: -10s; transform-origin: 20vw 25vh; box-shadow: 40vmin 0 7vmin currentColor; }
+.background span:nth-child(12) { color: var(--color-3); top: 90%; left: 40%; animation-duration: 16s; animation-delay: -3s; transform-origin: -25vw 5vh; box-shadow: -40vmin 0 13vmin currentColor; }
+.background span:nth-child(13) { color: var(--color-1); top: 40%; left: 90%; animation-duration: 14s; animation-delay: -8s; transform-origin: 10vw -20vh; box-shadow: 40vmin 0 0vmin currentColor; opacity: 0.5;}
+.background span:nth-child(14) { color: var(--color-2); top: 60%; left: 10%; animation-duration: 18s; animation-delay: -4s; transform-origin: -15vw 10vh; box-shadow: -40vmin 0 15vmin currentColor; }
+.background span:nth-child(15) { color: var(--color-3); top: 20%; left: 30%; animation-duration: 11s; animation-delay: -7s; transform-origin: 5vw 15vh; box-shadow: 40vmin 0 8vmin currentColor; }
+.background span:nth-child(16) { color: var(--color-1); top: 80%; left: 70%; animation-duration: 20s; animation-delay: -2s; transform-origin: -10vw -10vh; box-shadow: -40vmin 0 17vmin currentColor; }
+.background span:nth-child(17) { color: var(--color-2); top: 50%; left: 80%; animation-duration: 13s; animation-delay: -9s; transform-origin: 25vw 20vh; box-shadow: 0vmin 0 9vmin currentColor; opacity: 0.5; }
+.background span:nth-child(18) { color: var(--color-3); top: 30%; left: 20%; animation-duration: 15s; animation-delay: -5s; transform-origin: -20vw -5vh; box-shadow: -40vmin 0 12vmin currentColor; }
+.background span:nth-child(19) { color: var(--color-1); top: 70%; left: 60%; animation-duration: 17s; animation-delay: -1s; transform-origin: 15vw 10vh; box-shadow: 40vmin 0 14vmin currentColor; }
+.background span:nth-child(20) { color: var(--color-2); top: 10%; left: 50%; animation-duration: 19s; animation-delay: -6s; transform-origin: -5vw 25vh; box-shadow: -40vmin 0 16vmin currentColor; }
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
